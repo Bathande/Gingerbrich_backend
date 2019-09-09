@@ -12115,11 +12115,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bathande Ndabe\\Desktop\\GingerBrich\\Backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend.csproj",
+      "projectUniqueName": "C:\\Users\\Bathande Ndabe\\Desktop\\GingerBrich\\Backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend.csproj",
       "projectName": "Gingerbrich_backend",
-      "projectPath": "C:\\Users\\Bathande Ndabe\\Desktop\\GingerBrich\\Backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend.csproj",
+      "projectPath": "C:\\Users\\Bathande Ndabe\\Desktop\\GingerBrich\\Backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend.csproj",
       "packagesPath": "C:\\Users\\Bathande Ndabe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bathande Ndabe\\Desktop\\GingerBrich\\Backend\\Gingerbrich_backend\\Gingerbrich_backend\\Gingerbrich_backend\\obj\\",
+      "outputPath": "C:\\Users\\Bathande Ndabe\\Desktop\\GingerBrich\\Backend\\Gingerbrich_backend\\Gingerbrich_backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

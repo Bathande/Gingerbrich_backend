@@ -26,6 +26,8 @@ namespace Gingerbrich_backend.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("Surname");
+
                     b.HasKey("Id");
 
                     b.ToTable("Person");
