@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Gingerbrich_backend.Models
 {
-    public class Person
+    public class Permission
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-
+        public string type { get; set; }
     }
 }
