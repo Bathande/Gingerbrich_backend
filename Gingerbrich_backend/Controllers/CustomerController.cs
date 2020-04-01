@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Gingerbrich_backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Gingerbrich_backend.Helper;
+using Gingerbrich_backend.HelperModels;
 
 namespace Gingerbrich_backend.Controllers
 {
@@ -63,20 +64,24 @@ namespace Gingerbrich_backend.Controllers
             return NoContent();
         }
         [HttpPost("Login")]
-        public async Task<ActionResult> Login(Customer userModel)
+        public async Task<ActionResult> Login(UserLogin userModel)
         {
-            Customer user;
+            Customer customer;
             try
             {
-                user = await _context.Customer.FirstOrDefaultAsync(x => x.username == userModel.username && Encryption.VerifyPassword(userModel.password,x.password));
+                customer = await _context.Customer.FirstOrDefaultAsync(x => x.username == userModel.username && Encryption.VerifyPassword(userModel.password,x.password));
+                if(customer == null)
+                {
+                    return Ok(new {message = "Invalid Password or Username" });
+                }
 
             }catch(DbUpdateConcurrencyException)
             {
-                return BadRequest(new {status="failed", messege="Invalid Password or Username" });
+                return BadRequest(new { message="Failed" });
             }
-            string usertoken = new Authetication().GenerateJsonToken(user);
-            user.password = null;
-            return Ok(new { customer =user, token= usertoken });
+            string usertoken = new Authetication().GenerateJsonToken(customer);
+            customer.password = null;
+            return Ok(new { user = customer, token= usertoken });
         }
         // POST: api/Users
         [HttpPost]

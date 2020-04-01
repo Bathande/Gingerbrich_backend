@@ -15,10 +15,10 @@ namespace Gingerbrich_backend.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer_Permission>().HasKey(sc => new { sc.Permission_Id, sc.Customer_Id });
-            modelBuilder.Entity<Product_Discount>().HasKey(sc => new { sc.Discount_Id, sc.Product_id });
-            modelBuilder.Entity<Order_Product>().HasKey(sc => new { sc.Customer_Id, sc.Product_Id });
-            modelBuilder.Entity<Customer_Notification>().HasKey(sc => new { sc.Customer_Id, sc.Notification_Id });
+            modelBuilder.Entity<Customer_Permission>().HasKey(sc => new { sc.PermissionId, sc.CustomerId });
+            modelBuilder.Entity<Product_Discount>().HasKey(sc => new { sc.DiscountId, sc.ProductId });
+            modelBuilder.Entity<Order_Product>().HasKey(sc => new { sc.CustomerId, sc.ProductId });
+            modelBuilder.Entity<Customer_Notification>().HasKey(sc => new { sc.CustomerID, sc.NotificationID });
             modelBuilder.Entity<Customer>().HasIndex(c => c.username).IsUnique();
             modelBuilder.Entity<Image>().HasIndex(c => c.Url).IsUnique();
         }

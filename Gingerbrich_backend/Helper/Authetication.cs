@@ -22,7 +22,6 @@ namespace Gingerbrich_backend.Helper
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.username),
                 new Claim(JwtRegisteredClaimNames.Email, user.email),
-                new Claim(JwtRegisteredClaimNames.Amr, user.id_number),
                //new Claim(JwtRegisteredClaimNames.Website,"bathande.com"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 

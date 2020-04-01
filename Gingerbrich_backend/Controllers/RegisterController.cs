@@ -39,8 +39,8 @@ namespace Gingerbrich_backend.Controllers
                     userPerm.type = userType;
                     context.Permission.Add(userPerm);
                     Customer_Permission cPerm = new Customer_Permission();
-                    cPerm.Permission_Id = userPerm.Id;
-                    cPerm.Customer_Id = customer.Id;
+                    cPerm.PermissionId = userPerm.Id;
+                    cPerm.CustomerId = customer.Id;
                     context.Customer_Permission.Add(cPerm);
                     await context.SaveChangesAsync();
                 }

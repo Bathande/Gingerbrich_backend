@@ -10,12 +10,12 @@ namespace Gingerbrich_backend.Models
     public class Customer_Permission
     {
         [Key]
-        public int Permission_Id { get; set; }
+        public int PermissionId { get; set; }
         [Key]
-        public int Customer_Id { get; set; }
-        [ForeignKey("Customer_Id")]
+        public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
         public virtual Customer Customer { get; set; }
-        [ForeignKey("Permission_Id")]
+        [ForeignKey("PermissionId")]
         public virtual Permission Permission { get; set; }
     }
 }

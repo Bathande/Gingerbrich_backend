@@ -16,11 +16,8 @@ namespace Gingerbrich_backend.Models
         public string password { get; set; }
         [EmailAddress]
         public string email { get; set; }
-        
-        public string address { get; set; }
-        public int phone_number { get; set; }
+        public int phoneNumber { get; set; }
         public string gender { get; set; }
-        public string id_number { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
 
