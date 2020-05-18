@@ -12,7 +12,7 @@ namespace Gingerbrich_backend.Helper
  
         public static Customer removePassword(this Customer customer)
         {
-            customer.password = null;
+            customer.Password = null;
             return customer;
         }
     }

@@ -1,19 +1,34 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Gingerbrich_backend.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Brand",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    name = table.Column<string>(nullable: true),
+                    est = table.Column<string>(nullable: true),
+                    slogan = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brand", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -26,16 +41,14 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    username = table.Column<string>(nullable: true),
-                    password = table.Column<string>(nullable: true),
-                    email = table.Column<string>(nullable: true),
-                    address = table.Column<string>(nullable: true),
-                    phone_number = table.Column<int>(nullable: false),
-                    gender = table.Column<string>(nullable: true),
-                    id_number = table.Column<string>(nullable: true),
-                    name = table.Column<string>(nullable: true),
-                    surname = table.Column<string>(nullable: true)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<int>(nullable: false),
+                    Gender = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Surname = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,7 +60,7 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     code = table.Column<string>(nullable: true),
                     start_time = table.Column<DateTime>(nullable: false),
                     end_time = table.Column<DateTime>(nullable: false)
@@ -62,7 +75,7 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Product_Id = table.Column<int>(nullable: false),
                     Url = table.Column<string>(nullable: true)
                 },
@@ -76,7 +89,7 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     text = table.Column<string>(nullable: true),
                     date = table.Column<DateTime>(nullable: false)
                 },
@@ -90,7 +103,7 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Customer_Id = table.Column<int>(nullable: false),
                     date = table.Column<DateTime>(nullable: false)
                 },
@@ -104,7 +117,7 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Customer_Id = table.Column<int>(nullable: false),
                     amount = table.Column<double>(nullable: false),
                     date = table.Column<DateTime>(nullable: false)
@@ -119,8 +132,8 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    type = table.Column<string>(nullable: true)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    type = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,7 +145,8 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    name = table.Column<string>(nullable: true),
                     brand_name = table.Column<string>(nullable: true),
                     size = table.Column<string>(nullable: true),
                     color = table.Column<string>(nullable: true),
@@ -149,7 +163,7 @@ namespace Gingerbrich_backend.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     method = table.Column<string>(nullable: true),
                     Order_Id = table.Column<int>(nullable: false)
                 },
@@ -162,21 +176,21 @@ namespace Gingerbrich_backend.Migrations
                 name: "Customer_Notification",
                 columns: table => new
                 {
-                    Customer_Id = table.Column<int>(nullable: false),
-                    Notification_Id = table.Column<int>(nullable: false)
+                    customerId = table.Column<int>(nullable: false),
+                    notificationId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer_Notification", x => new { x.Customer_Id, x.Notification_Id });
+                    table.PrimaryKey("PK_Customer_Notification", x => new { x.customerId, x.notificationId });
                     table.ForeignKey(
-                        name: "FK_Customer_Notification_Customer_Customer_Id",
-                        column: x => x.Customer_Id,
+                        name: "FK_Customer_Notification_Customer_customerId",
+                        column: x => x.customerId,
                         principalTable: "Customer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Customer_Notification_Notification_Notification_Id",
-                        column: x => x.Notification_Id,
+                        name: "FK_Customer_Notification_Notification_notificationId",
+                        column: x => x.notificationId,
                         principalTable: "Notification",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -186,113 +200,113 @@ namespace Gingerbrich_backend.Migrations
                 name: "Customer_Permission",
                 columns: table => new
                 {
-                    Permission_Id = table.Column<int>(nullable: false),
-                    Customer_Id = table.Column<int>(nullable: false)
+                    permisssionId = table.Column<int>(nullable: false),
+                    customerId = table.Column<int>(nullable: false),
+                    permissionId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customer_Permission", x => new { x.Permission_Id, x.Customer_Id });
-                    table.UniqueConstraint("AK_Customer_Permission_Customer_Id_Permission_Id", x => new { x.Customer_Id, x.Permission_Id });
+                    table.PrimaryKey("PK_Customer_Permission", x => new { x.customerId, x.permisssionId });
                     table.ForeignKey(
-                        name: "FK_Customer_Permission_Customer_Customer_Id",
-                        column: x => x.Customer_Id,
+                        name: "FK_Customer_Permission_Customer_customerId",
+                        column: x => x.customerId,
                         principalTable: "Customer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Customer_Permission_Permission_Permission_Id",
-                        column: x => x.Permission_Id,
+                        name: "FK_Customer_Permission_Permission_permissionId",
+                        column: x => x.permissionId,
                         principalTable: "Permission",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Order_Product",
                 columns: table => new
                 {
-                    Product_Id = table.Column<int>(nullable: false),
-                    Customer_Id = table.Column<int>(nullable: false),
-                    User_Id = table.Column<int>(nullable: true)
+                    ProductId = table.Column<int>(nullable: false),
+                    OrderId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order_Product", x => new { x.Customer_Id, x.Product_Id });
+                    table.PrimaryKey("PK_Order_Product", x => new { x.OrderId, x.ProductId });
                     table.ForeignKey(
-                        name: "FK_Order_Product_Product_Product_Id",
-                        column: x => x.Product_Id,
-                        principalTable: "Product",
+                        name: "FK_Order_Product_Order_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Order",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Order_Product_Customer_User_Id",
-                        column: x => x.User_Id,
-                        principalTable: "Customer",
+                        name: "FK_Order_Product_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Product_Discount",
                 columns: table => new
                 {
-                    Product_id = table.Column<int>(nullable: false),
-                    Discount_Id = table.Column<int>(nullable: false)
+                    productId = table.Column<int>(nullable: false),
+                    discountId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product_Discount", x => new { x.Discount_Id, x.Product_id });
+                    table.PrimaryKey("PK_Product_Discount", x => new { x.productId, x.discountId });
                     table.ForeignKey(
-                        name: "FK_Product_Discount_Discount_Discount_Id",
-                        column: x => x.Discount_Id,
+                        name: "FK_Product_Discount_Discount_discountId",
+                        column: x => x.discountId,
                         principalTable: "Discount",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Product_Discount_Product_Product_id",
-                        column: x => x.Product_id,
+                        name: "FK_Product_Discount_Product_productId",
+                        column: x => x.productId,
                         principalTable: "Product",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customer_username",
+                name: "IX_Customer_Username",
                 table: "Customer",
-                column: "username",
-                unique: true,
-                filter: "[username] IS NOT NULL");
+                column: "Username",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customer_Notification_Notification_Id",
+                name: "IX_Customer_Notification_notificationId",
                 table: "Customer_Notification",
-                column: "Notification_Id");
+                column: "notificationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Customer_Permission_permissionId",
+                table: "Customer_Permission",
+                column: "permissionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Image_Url",
                 table: "Image",
                 column: "Url",
-                unique: true,
-                filter: "[Url] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_Product_Product_Id",
+                name: "IX_Order_Product_ProductId",
                 table: "Order_Product",
-                column: "Product_Id");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_Product_User_Id",
-                table: "Order_Product",
-                column: "User_Id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Product_Discount_Product_id",
+                name: "IX_Product_Discount_discountId",
                 table: "Product_Discount",
-                column: "Product_id");
+                column: "discountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Brand");
+
             migrationBuilder.DropTable(
                 name: "Category");
 
@@ -304,9 +318,6 @@ namespace Gingerbrich_backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Image");
-
-            migrationBuilder.DropTable(
-                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Order_Product");
@@ -324,10 +335,13 @@ namespace Gingerbrich_backend.Migrations
                 name: "Notification");
 
             migrationBuilder.DropTable(
+                name: "Customer");
+
+            migrationBuilder.DropTable(
                 name: "Permission");
 
             migrationBuilder.DropTable(
-                name: "Customer");
+                name: "Order");
 
             migrationBuilder.DropTable(
                 name: "Discount");

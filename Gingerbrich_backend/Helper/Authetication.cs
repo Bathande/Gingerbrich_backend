@@ -15,23 +15,30 @@ namespace Gingerbrich_backend.Helper
     {      
         public string GenerateJsonToken(Customer user)
         {
-            var s = Environment.GetEnvironmentVariable("Key");
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Key")));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            try
+            {
+                var s = Environment.GetEnvironmentVariable("Key");
+                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Environment.GetEnvironmentVariable("Key")));
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, user.username),
-                new Claim(JwtRegisteredClaimNames.Email, user.email),
-               //new Claim(JwtRegisteredClaimNames.Website,"bathande.com"),
+                var claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 
             };
-            var token = new JwtSecurityToken(Environment.GetEnvironmentVariable("Issuer"),
-            Environment.GetEnvironmentVariable("Issuer"), claims,
-            expires: DateTime.Now.AddDays(360),
-            signingCredentials: credentials);
+                var token = new JwtSecurityToken(Environment.GetEnvironmentVariable("Issuer"),
+                Environment.GetEnvironmentVariable("Issuer"), claims,
+                expires: DateTime.Now.AddDays(360),
+                signingCredentials: credentials);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+                return new JwtSecurityTokenHandler().WriteToken(token);
+            }
+            catch(Exception e)
+            {
+                return e.ToString();
+            }
+          
         }
     }
 }

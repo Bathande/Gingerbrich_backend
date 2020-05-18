@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Type = Gingerbrich_backend.Models.Type;
 
 namespace Gingerbrich_backend.Controllers
 {
@@ -21,26 +22,26 @@ namespace Gingerbrich_backend.Controllers
             this.context = context;
         }
         // POST: api/Register
-        [HttpPost("registration/{userType}")]
-        public async Task<ActionResult<Customer>> Post(string userType,[FromBody] Customer customer)
+        [HttpPost("registration/{type}")]
+        public async Task<ActionResult<Customer>> Post(Type type,[FromBody] Customer customer)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid)  return BadRequest(ModelState);
+            
             try
             {
-                var customerCheck = context.Customer.FirstOrDefaultAsync(x => x.username == customer.username);
+                var customerCheck = context.Customer.FirstOrDefaultAsync(x => x.Username == customer.Username);
                 if (customer != null)
                 {
-                    customer.password = Encryption.CreatePasswordHash(customer.password);
+                    customer.Password = Encryption.CreatePasswordHash(customer.Password);
                     context.Customer.Add(customer);
                     Permission userPerm = new Permission();
-                    userPerm.type = userType;
+                    userPerm.type = type;
                     context.Permission.Add(userPerm);
-                    Customer_Permission cPerm = new Customer_Permission();
-                    cPerm.PermissionId = userPerm.Id;
-                    cPerm.CustomerId = customer.Id;
+                    Customer_Permission cPerm = new Customer_Permission()
+                    {
+                        customer = customer,
+                        permission = userPerm
+                    };
                     context.Customer_Permission.Add(cPerm);
                     await context.SaveChangesAsync();
                 }
@@ -48,7 +49,6 @@ namespace Gingerbrich_backend.Controllers
                 {
                     return BadRequest(new { message = "user already Exist" });
                 }
-             
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -56,10 +56,10 @@ namespace Gingerbrich_backend.Controllers
             }
 
             Authetication userAuth = new Authetication();
-            customer.password = null;
+            customer.Password = null;
             var tokenString =userAuth.GenerateJsonToken(customer);
             return Ok(new { user= customer, token = tokenString });
         }
-
+    
     }
 }

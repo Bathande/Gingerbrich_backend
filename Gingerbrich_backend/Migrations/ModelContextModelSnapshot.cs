@@ -3,8 +3,8 @@ using System;
 using Gingerbrich_backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Gingerbrich_backend.Migrations
 {
@@ -15,15 +15,30 @@ namespace Gingerbrich_backend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            modelBuilder.Entity("Gingerbrich_backend.Models.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("est");
+
+                    b.Property<string>("name");
+
+                    b.Property<string>("slogan");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brand");
+                });
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Category", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("name");
 
@@ -35,58 +50,54 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("address");
+                    b.Property<string>("Email");
 
-                    b.Property<string>("email");
+                    b.Property<string>("Gender");
 
-                    b.Property<string>("gender");
+                    b.Property<string>("Name");
 
-                    b.Property<string>("id_number");
+                    b.Property<string>("Password");
 
-                    b.Property<string>("name");
+                    b.Property<int>("PhoneNumber");
 
-                    b.Property<string>("password");
+                    b.Property<string>("Surname");
 
-                    b.Property<int>("phone_number");
-
-                    b.Property<string>("surname");
-
-                    b.Property<string>("username");
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("username")
-                        .IsUnique()
-                        .HasFilter("[username] IS NOT NULL");
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Customer_Notification", b =>
                 {
-                    b.Property<int>("Customer_Id");
+                    b.Property<int>("customerId");
 
-                    b.Property<int>("Notification_Id");
+                    b.Property<int>("notificationId");
 
-                    b.HasKey("Customer_Id", "Notification_Id");
+                    b.HasKey("customerId", "notificationId");
 
-                    b.HasIndex("Notification_Id");
+                    b.HasIndex("notificationId");
 
                     b.ToTable("Customer_Notification");
                 });
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Customer_Permission", b =>
                 {
-                    b.Property<int>("Permission_Id");
+                    b.Property<int>("customerId");
 
-                    b.Property<int>("Customer_Id");
+                    b.Property<int>("permisssionId");
 
-                    b.HasKey("Permission_Id", "Customer_Id");
+                    b.Property<int?>("permissionId");
 
-                    b.HasAlternateKey("Customer_Id", "Permission_Id");
+                    b.HasKey("customerId", "permisssionId");
+
+                    b.HasIndex("permissionId");
 
                     b.ToTable("Customer_Permission");
                 });
@@ -94,8 +105,7 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Discount", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("code");
 
@@ -111,8 +121,7 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Image", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Product_Id");
 
@@ -121,8 +130,7 @@ namespace Gingerbrich_backend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Url")
-                        .IsUnique()
-                        .HasFilter("[Url] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Image");
                 });
@@ -130,8 +138,7 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Notification", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("date");
 
@@ -145,8 +152,7 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Order", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Customer_Id");
 
@@ -159,17 +165,13 @@ namespace Gingerbrich_backend.Migrations
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Order_Product", b =>
                 {
-                    b.Property<int>("Customer_Id");
+                    b.Property<int>("OrderId");
 
-                    b.Property<int>("Product_Id");
+                    b.Property<int>("ProductId");
 
-                    b.Property<int?>("User_Id");
+                    b.HasKey("OrderId", "ProductId");
 
-                    b.HasKey("Customer_Id", "Product_Id");
-
-                    b.HasIndex("Product_Id");
-
-                    b.HasIndex("User_Id");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Order_Product");
                 });
@@ -177,8 +179,7 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Payment", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Customer_Id");
 
@@ -194,10 +195,9 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Permission", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("type");
+                    b.Property<int>("type");
 
                     b.HasKey("Id");
 
@@ -207,14 +207,15 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Product", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("brand_name");
 
                     b.Property<string>("color");
 
                     b.Property<string>("discription");
+
+                    b.Property<string>("name");
 
                     b.Property<string>("size");
 
@@ -227,13 +228,13 @@ namespace Gingerbrich_backend.Migrations
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Product_Discount", b =>
                 {
-                    b.Property<int>("Discount_Id");
+                    b.Property<int>("productId");
 
-                    b.Property<int>("Product_id");
+                    b.Property<int>("discountId");
 
-                    b.HasKey("Discount_Id", "Product_id");
+                    b.HasKey("productId", "discountId");
 
-                    b.HasIndex("Product_id");
+                    b.HasIndex("discountId");
 
                     b.ToTable("Product_Discount");
                 });
@@ -241,8 +242,7 @@ namespace Gingerbrich_backend.Migrations
             modelBuilder.Entity("Gingerbrich_backend.Models.Shipping", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("Order_Id");
 
@@ -255,52 +255,52 @@ namespace Gingerbrich_backend.Migrations
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Customer_Notification", b =>
                 {
-                    b.HasOne("Gingerbrich_backend.Models.Customer", "Customer")
+                    b.HasOne("Gingerbrich_backend.Models.Customer", "custome")
                         .WithMany()
-                        .HasForeignKey("Customer_Id")
+                        .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Gingerbrich_backend.Models.Notification", "Notification")
+                    b.HasOne("Gingerbrich_backend.Models.Notification", "notification")
                         .WithMany()
-                        .HasForeignKey("Notification_Id")
+                        .HasForeignKey("notificationId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Customer_Permission", b =>
                 {
-                    b.HasOne("Gingerbrich_backend.Models.Customer", "Customer")
+                    b.HasOne("Gingerbrich_backend.Models.Customer", "customer")
                         .WithMany()
-                        .HasForeignKey("Customer_Id")
+                        .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Gingerbrich_backend.Models.Permission", "Permission")
+                    b.HasOne("Gingerbrich_backend.Models.Permission", "permission")
                         .WithMany()
-                        .HasForeignKey("Permission_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("permissionId");
                 });
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Order_Product", b =>
                 {
-                    b.HasOne("Gingerbrich_backend.Models.Product", "Product")
+                    b.HasOne("Gingerbrich_backend.Models.Order", "order")
                         .WithMany()
-                        .HasForeignKey("Product_Id")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Gingerbrich_backend.Models.Customer", "Customer")
+                    b.HasOne("Gingerbrich_backend.Models.Product", "product")
                         .WithMany()
-                        .HasForeignKey("User_Id");
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Gingerbrich_backend.Models.Product_Discount", b =>
                 {
-                    b.HasOne("Gingerbrich_backend.Models.Discount", "Discount")
+                    b.HasOne("Gingerbrich_backend.Models.Discount", "discount")
                         .WithMany()
-                        .HasForeignKey("Discount_Id")
+                        .HasForeignKey("discountId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Gingerbrich_backend.Models.Product", "Product")
+                    b.HasOne("Gingerbrich_backend.Models.Product", "product")
                         .WithMany()
-                        .HasForeignKey("Product_id")
+                        .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

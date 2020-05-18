@@ -36,7 +36,8 @@ namespace Gingerbrich_backend
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<ModelContext>(option => option.UseSqlServer(Configuration.GetConnectionString("gingerbrichdatabase")));
+            services.AddDbContext<ModelContext>(options => options.UseNpgsql(Configuration.GetConnectionString("gingerbrichdatabase")));
+            //services.AddDbContext<ModelContext>(option => option.UseSqlServer(Configuration.GetConnectionString("gingerbrichdatabase")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(options =>
             {
@@ -87,7 +88,6 @@ namespace Gingerbrich_backend
                 .AllowCredentials());
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseSwagger();
             app.UseSwaggerUI(c =>

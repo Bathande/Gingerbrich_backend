@@ -12,6 +12,11 @@ namespace Gingerbrich_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string type { get; set; }
+        public Type type { get; set; }
+    }
+    public enum Type
+    {
+        Admin = 1,
+        Customer = 2
     }
 }

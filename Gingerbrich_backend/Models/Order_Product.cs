@@ -9,10 +9,11 @@ namespace Gingerbrich_backend.Models
 {
     public class Order_Product
     {
-        [Key]
+        [ForeignKey("productId")]
         public int ProductId { get; set; }
-        [Key]
+        public virtual Product product { get; set; } 
+        [ForeignKey("orderID")]
         public int OrderId { get; set; }
-      
-    }
+        public virtual Order order { get; set; }
+     }
 }

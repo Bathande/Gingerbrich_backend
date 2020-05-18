@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gingerbrich_backend.Models
+namespace Gingerbrich_backend.HelperModels
 {
-    public class Product
+    public class ProductModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+
         public string name { get; set; }
         public string brand_name { get; set; }
         public string size { get; set; }
         public string color { get; set; }
         public string stock_left { get; set; }
+        public List<SizeQuantity> sizesQuantity { get; set; }
         public string discription { get; set; }
     }
 }

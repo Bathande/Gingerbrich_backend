@@ -9,13 +9,11 @@ namespace Gingerbrich_backend.Models
 {
     public class Customer_Notification
     {
-        [Key]
-        public int CustomerID { get; set; }
-        [Key]
-        public int NotificationID { get; set; }
-        [ForeignKey("CustomerID")]
-        public virtual Customer Customer { get; set; }
-        [ForeignKey("NotificationID")]
-        public virtual Notification Notification { get; set; }
+        [ForeignKey("customerId")]
+        public int customerId { get; set; }
+        public virtual Customer custome { get; set; }
+        [ForeignKey("notificationId")]
+        public int notificationId { get; set; }
+        public virtual Notification notification { get; set; }
     }
 }

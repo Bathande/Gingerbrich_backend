@@ -64,15 +64,15 @@ namespace Gingerbrich_backend.Controllers
             return NoContent();
         }
         [HttpPost("Login")]
-        public async Task<ActionResult> Login(UserLogin userModel)
+        public async Task<ActionResult> Login([FromBody] UserLogin userModel)
         {
             Customer customer;
             try
             {
-                customer = await _context.Customer.FirstOrDefaultAsync(x => x.username == userModel.username && Encryption.VerifyPassword(userModel.password,x.password));
+                customer = await _context.Customer.FirstOrDefaultAsync(x => x.Username == userModel.username && Encryption.VerifyPassword(userModel.password,x.Password));
                 if(customer == null)
                 {
-                    return Ok(new {message = "Invalid Password or Username" });
+                    return NotFound(new {message = "Invalid Password or Username" });
                 }
 
             }catch(DbUpdateConcurrencyException)
@@ -80,17 +80,8 @@ namespace Gingerbrich_backend.Controllers
                 return BadRequest(new { message="Failed" });
             }
             string usertoken = new Authetication().GenerateJsonToken(customer);
-            customer.password = null;
+            customer.Password = null;
             return Ok(new { user = customer, token= usertoken });
-        }
-        // POST: api/Users
-        [HttpPost]
-        public async Task<ActionResult<Customer>> PostUser(Customer user)
-        {
-            _context.Customer.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
         private bool UserExists(int id)

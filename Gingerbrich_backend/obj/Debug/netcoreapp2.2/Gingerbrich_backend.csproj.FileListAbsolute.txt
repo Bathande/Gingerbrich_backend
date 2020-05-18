@@ -5,7 +5,6 @@ C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbr
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\bin\Debug\netcoreapp2.2\Gingerbrich_backend.pdb
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\bin\Debug\netcoreapp2.2\Gingerbrich_backend.Views.dll
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\bin\Debug\netcoreapp2.2\Gingerbrich_backend.Views.pdb
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.csproj.CoreCompileInputs.cache
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.RazorAssemblyInfo.cache
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.RazorAssemblyInfo.cs
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.AssemblyInfoInputs.cache
@@ -13,14 +12,6 @@ C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbr
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.TagHelpers.input.cache
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.TagHelpers.output.cache
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.RazorCoreGenerate.cache
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
-C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.RazorTargetAssemblyInfo.cache
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.RazorTargetAssemblyInfo.cs
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.Views.pdb
@@ -28,3 +19,14 @@ C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbr
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.pdb
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.csproj.CopyComplete
 C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Gingerbrich_backend.csprojAssemblyReference.cache
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Bathande Ndabe\Desktop\GingerBrich\Backend\Gingerbrich_backend\Gingerbrich_backend\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.cshtml.g.cs
