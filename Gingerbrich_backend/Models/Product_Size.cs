@@ -9,6 +9,7 @@ namespace Gingerbrich_backend.Models
     public class Product_Size
     {
         [ForeignKey("productId")]
+        public int productId { get; set; }
         public virtual Product product { get; set; }
         [ForeignKey("sizeId")]
         public int sizeId { get; set; }

@@ -108,17 +108,33 @@ namespace Gingerbrich_backend.Controllers
                             size = item.size,
                             left = item.left
                         };
-                        //_context.Size.Add(size);
+                        _context.Size.Add(size);
                         Product_Size product_size = new Product_Size
                         {
                             product = product,
                             size = size
                         };
-                        //_context.Product_Size.Add(product_size);
+                        _context.Product_Size.Add(product_size);
                     }
-                    //foreach(var item in productModel.)
-                    
-
+                    foreach(var item in productModel.categories)
+                    {
+                        Category category = new Category();
+                        category.name = item.name;
+                        Product_Category product_Category = new Product_Category()
+                        {
+                            product = product,
+                            category = category
+                        };
+                        _context.Category.Add(category);
+                        _context.product_categories.Add(product_Category);
+                    }
+                    foreach(var item in productModel.images)
+                    {
+                        Image image = new Image();
+                        image.Url = item.Url;
+                        image.product =product;
+                        _context.Image.Add(image);
+                    }
                     _context.Product.Add(product);
                     await _context.SaveChangesAsync();
                     return Ok(new { product, message = "success" });

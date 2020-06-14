@@ -12,7 +12,9 @@ namespace Gingerbrich_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int Product_Id { get; set; }
+        [ForeignKey("productId")]
+        public int? Product_Id { get; set; }
+        public virtual Product product { get; set; }
         public string Url { get; set; }
     }
 }

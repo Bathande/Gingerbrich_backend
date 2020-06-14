@@ -20,6 +20,8 @@ namespace Gingerbrich_backend.Models
             modelBuilder.Entity<Product_Discount>().HasKey(sc => new { sc.productId, sc.discountId });
             modelBuilder.Entity<Order_Product>().HasKey(sc => new { sc.OrderId, sc.ProductId });
             modelBuilder.Entity<Customer_Notification>().HasKey(sc => new { sc.customerId, sc.notificationId });
+            modelBuilder.Entity<Product_Category>().HasKey(sc => new { sc.productId, sc.categoryId });
+            modelBuilder.Entity<Product_Size>().HasKey(sc => new { sc.productId, sc.sizeId });
             modelBuilder.Entity<Customer>().HasIndex(c => c.Username).IsUnique();
             modelBuilder.Entity<Image>().HasIndex(c => c.Url).IsUnique();
         }
@@ -37,7 +39,10 @@ namespace Gingerbrich_backend.Models
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Notification> Notification { get; set; }
         public virtual DbSet<Customer_Notification> Customer_Notification { get; set; }
+        public virtual DbSet<Product_Category> product_categories { get; set; }
         public virtual DbSet<Image> Image { get; set; }
-        public DbSet<Gingerbrich_backend.Models.Brand> Brand { get; set; }
+        public DbSet<Brand> Brand { get; set; }
+        public DbSet<Size> Size { get; set; }
+        public DbSet<Product_Size> Product_Size { get; set; }
     }
 }
